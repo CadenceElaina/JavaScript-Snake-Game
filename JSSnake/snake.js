@@ -1,6 +1,6 @@
 import { getInputDirection } from "./input.js"
-
-export const SNAKE_SPEED = 5
+export let score = 0;
+export let snakeSpeed = 10
 const snakeBody = [
     { x: 10, y: 11 }]//,
 //   { x: 11, y: 11 },
@@ -37,6 +37,9 @@ export function draw(gameBoard) {
 
 export function expandSnake(amount) {
     newSegments += amount
+    score++;
+    let span = document.getElementById("score");
+    span.innerHTML = score;
 }
 
 export function onSnake(position, { ignroeHead = false } = {}) {
@@ -45,6 +48,7 @@ export function onSnake(position, { ignroeHead = false } = {}) {
     // .some means if any of our snakes body is on the food then return true
     return snakeBody.some((segment, index) => {
         if (ignroeHead && index === 0) return false // ignoring the head intersection bc head is obviously already intereacting/ on the location teh head is at 
+
         return equalPositions(segment, position)
     })
 }

@@ -1,51 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake</title>
-    <style>
-        body {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            background-color: black;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Snake</title>
+        <style>
+            body {
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                background-color: black;
+            }
 
-        #game-board {
-            background-color: #CCC;
-            width: 100vmin;
-            /* whichever direction is narrowest - vmin  always sqaure shape that is large as possible
+            #game-board {
+                background-color: #CCC;
+                width: 90vmin;
+                /* whichever direction is narrowest - vmin  always sqaure shape that is large as possible
             to fill our entire screen */
-            height: 100vmin;
-            display: grid;
-            grid-template-rows: repeat(21, 1fr);
-            grid-template-columns: repeat(21, 1fr);
-            /* 21 even squares no matter the size of the browser */
+                height: 90vmin;
+                display: grid;
+                grid-template-rows: repeat(21, 1fr);
+                grid-template-columns: repeat(21, 1fr);
+                /* 21 even squares no matter the size of the browser */
+            }
 
-        }
+            .snake {
+                background-color: hsl(200, 100%, 50%);
+                border: .25vmin solid black;
+            }
 
-        .snake {
-            background-color: hsl(200, 100%, 50%);
-            border: .25vmin solid black;
-        }
+            .food {
+                background-color: hsl(50, 100%, 50%);
+                border: .25vmin solid black;
+            }
 
-        .food {
-            background-color: hsl(50, 100%, 50%);
-            border: .25vmin solid black;
-        }
-    </style>
-    <script src="game.js" defer type="module"></script>
-    <!-- defer to load after body of page - module to use multiple JS files using import and export -->
-</head>
+            .score {
 
-<body>
-    <div id="game-board"></div>
-</body>
+                margin: 20px;
+                display: flex;
+                align-self: start;
+            }
+
+            .menu {
+                /* position: absolute; */
+
+                background-color: white;
+                color: black;
+            }
+
+            .speed input {
+                width: 90%;
+                margin-bottom: 5px;
+                padding: .5rem;
+            }
+
+            .menu ul li {
+                list-style: none;
+                padding: 1rem;
+            }
+        </style>
+        <script src="game.js" defer type="module"></script>
+        <!-- defer to load after body of page - module to use multiple JS files using import and export -->
+    </head>
+
+    <body>
+        <div class="score">
+            <div class="menu">
+                <ul class="menu__inner">
+                    <li>Welcome to Snake The Game!</li>
+                    <li>Previous Score: <span id="highScore"></span></li>
+                    <li>Current Score: <span id="score"></span></li>
+
+                </ul>
+                <!--    <div class="speed">
+                    <input id='speedValue' type='mumber' placeholder="Change the speed of the snake!"></input>
+                    <button id="speed">Change speed</button>
+                </div> -->
+            </div>
+        </div>
+
+        <div id="game-board">
+            <!--  <div id="menu">
+                <ul class="list">
+                    <li class="list-item">Welcome select a game mode</li>
+                    <li class="list-item"><button id="impossible">Impossible</button></li>
+                    <li class="list-item"><button id="hard">Hard</button></li>
+                    <li class="list-item"><button id="normal">Normal</button></li>
+                    <li class="list-item"><button id="easy">Easy</button></li>
+                </ul>
+            </div> -->
+        </div>
+
+    </body>
 
 </html>
